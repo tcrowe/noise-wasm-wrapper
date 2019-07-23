@@ -325,6 +325,15 @@ Create the public and private key pair
 
 You can review he [key pair curve id list](https://github.com/nazar-pc/noise-c.wasm/blob/master/src/constants.ls#L27). At the time of writing this only two work, `NOISE_DH_CURVE25519` and `NOISE_DH_CURVE448`.
 
+```js
+const { createKeyPair }  = require("noise-wasm-wrapper");
+
+createKeyPair(function(err, keyPair) {
+  console.log("err", err);
+  console.log("keyPair", keyPair);
+});
+```
+
 ### createNoise
 
 Create the noise object with the configurations for your network.
@@ -351,6 +360,18 @@ The callback provides (err, { noise, handshakeState, handshake })
 + @param {array|buffer} [opts.remotePublicKey] required if initiator
 + @param {function} done
 
+```js
+// create responder noise instance
+createNoise({ keyPair }, function({handshake}) {
+  // go handshake the stream
+});
+
+// create initiator noise instance
+createNoise({ keyPair, remotePublicKey: responderKeyPair.publicKey }, function({handshake}) {
+  // go handshake the stream
+});
+```
+
 #### handshake
 
 Once you `createNoise` you'll get a handshake function. It will listen for or initiate the handshake with the peer.
@@ -360,6 +381,8 @@ The callback provides:
 + {object} response.handshakeState
 + {function} response.encrypt
 + {function} response.decrypt
++ {function} response.getRemotePublicKey
++ {function} response.getHandshakeHash
 
 @method handshake
 + @param {object} options.socket
