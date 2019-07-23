@@ -1,0 +1,10 @@
+--colors
+--reporter spec
+--ui bdd
+--bail
+--full-trace
+--exit
+--require should
+
+# handshake time can be extended or reduced
+--timeout 6000

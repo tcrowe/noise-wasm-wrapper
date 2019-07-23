@@ -1,0 +1,45 @@
+{
+  "name": "noise-wasm-wrapper",
+  "version": "0.1.0",
+  "description": "",
+  "author": "Tony Crowe <npm@tonycrowe.com> (https://github.com/tcrowe)",
+  "license": "GPL-3.0",
+  "homepage": "https://github.com/tcrowe/noise-wasm-wrapper#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/tcrowe/noise-wasm-wrapper.git"
+  },
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/tcrowe/noise-wasm-wrapper/issues"
+  },
+  "main": "src/index.js",
+  "dependencies": {
+    "lodash": "^4.17.15",
+    "noise-c.wasm": "^0.4.0"
+  },
+  "devDependencies": {
+    "eslint": "^6.1.0",
+    "eslint-config-prettier": "^6.0.0",
+    "eslint-plugin-prettier": "^3.1.0",
+    "mocha": "^6.2.0",
+    "nodemon": "^1.19.1",
+    "npm-run-all": "^4.1.5",
+    "nyc": "^14.1.1",
+    "prettier": "^1.18.2",
+    "should": "^13.2.3"
+  },
+  "scripts": {
+    "clean": "rm -rf .nyc_output .eslintcache",
+    "dev-eslint": "nodemon -q -w src -w test --exec 'eslint --cache --fix --format unix src examples test' || true",
+    "dev-test": "nodemon -d 1 -w src -w test --exec 'mocha' || true",
+    "dev": "run-p dev-*",
+    "test": "mocha",
+    "coverage": "nyc mocha",
+    "prd-eslint": "eslint --format unix src test",
+    "prd": "run-s clean prd-* test"
+  },
+  "nyc": {
+    "reporter": ["text", "html"]
+  }
+}
