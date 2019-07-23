@@ -361,13 +361,19 @@ The callback provides (err, { noise, handshakeState, handshake })
 + @param {function} done
 
 ```js
+const { createNoise } = require("noise-wasm-wrapper");
+
+// get the key pairs
+// const responderKeyPair = { publicKey: [...], privateKey: [...]}
+// const initiatorKeyPair = { publicKey: [...], privateKey: [...]}
+
 // create responder noise instance
-createNoise({ keyPair }, function({handshake}) {
+createNoise({ keyPair: responderKeyPair }, function({ handshake }) {
   // go handshake the stream
 });
 
 // create initiator noise instance
-createNoise({ keyPair, remotePublicKey: responderKeyPair.publicKey }, function({handshake}) {
+createNoise({ keyPair: initiatorKeyPair, remotePublicKey: responderKeyPair.publicKey }, function({ handshake }) {
   // go handshake the stream
 });
 ```
