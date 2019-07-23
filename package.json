@@ -30,7 +30,7 @@
     "should": "^13.2.3"
   },
   "scripts": {
-    "clean": "rm -rf .nyc_output .eslintcache",
+    "clean": "rm -rf .nyc_output coverage .eslintcache",
     "dev-eslint": "nodemon -q -w src -w test --exec 'eslint --cache --fix --format unix src examples test' || true",
     "dev-test": "nodemon -d 1 -w src -w test --exec 'mocha' || true",
     "dev": "run-p dev-*",
