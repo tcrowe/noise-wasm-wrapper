@@ -337,19 +337,19 @@ The callback provides (err, { noise, handshakeState, handshake })
 + {function} response.handshake
 
 @method createNoise
-@param {object} opts
-@param {string} [opts.pattern="XK"]
-@param {string} [opts.curve="25519"]
-@param {string} [opts.cipher="ChaChaPoly"]
-@param {string} [opts.hash="BLAKE2b"]
-@param {string|buffer} [opts.prologue] shared secret message
-@param {string|buffer} [opts.psk] pre-shared symmetric key
-@param {string} [opts.mode="responder"] "initiator" or "responder"
-@param {object} opts.keyPair
-@param {array|buffer} opts.keyPair.publicKey
-@param {array|buffer} opts.keyPair.privateKey
-@param {array|buffer} [opts.remotePublicKey] required if initiator
-@param {function} done
++ @param {object} opts
++ @param {string} [opts.pattern="XK"]
++ @param {string} [opts.curve="25519"]
++ @param {string} [opts.cipher="ChaChaPoly"]
++ @param {string} [opts.hash="BLAKE2b"]
++ @param {string|buffer} [opts.prologue] shared secret message
++ @param {string|buffer} [opts.psk] pre-shared symmetric key
++ @param {string} [opts.mode="responder"] "initiator" or "responder"
++ @param {object} opts.keyPair
++ @param {array|buffer} opts.keyPair.publicKey
++ @param {array|buffer} opts.keyPair.privateKey
++ @param {array|buffer} [opts.remotePublicKey] required if initiator
++ @param {function} done
 
 #### handshake
 
@@ -362,9 +362,9 @@ The callback provides:
 + {function} response.decrypt
 
 @method handshake
-@param {object} options.socket
-@param {number} [options.maxHandshakeOperations=12]
-@param {function} done
++ @param {object} options.socket
++ @param {number} [options.maxHandshakeOperations=12]
++ @param {function} done
 
 [HandshakeState](https://github.com/nazar-pc/noise-c.wasm#noisehandshakestateprotocol_name-role)
 
