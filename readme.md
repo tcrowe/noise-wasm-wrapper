@@ -22,6 +22,22 @@ The hope is that it's a useful and robust module which can be depended on as a f
 
 ## Usage
 
+In short it's like this:
+
+```js
+const { createKeyPair, createNoise } require("noise-wasm-wrapper");
+// const socket = (net socket or stream)
+
+createKeyPair(function(err, keyPair) {
+  createNoise({ keyPair }, function({ handshake }) {
+    handshake({ socket }, function(err, { encrypt, decrypt }) {
+      socket.on("data", chunk => console.log(decrypt(chunk)));
+      socket.write(encrypt(Buffer.from("encrypt me pls")));
+    });
+  });
+});
+```
+
 ### Create key pairs
 
 Create key pairs for the local and remote nodes. [./examples/create-key-pairs.js](./examples/create-key-pairs.js)
